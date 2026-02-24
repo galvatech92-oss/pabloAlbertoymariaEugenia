@@ -46,8 +46,9 @@
 
         /* --- PORTADA (HERO) --- */
         .hero {
-            /* Usamos min-height para que se adapte mejor en celulares */
-            min-height: 100vh;
+            /* SE QUITA EL min-height: 100vh PARA EVITAR EL ATORÓN */
+            padding-top: 60px; /* Damos espacio arriba */
+            padding-bottom: 60px; /* Damos espacio abajo */
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1519225421980-715cb0200d89?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
             background-size: cover;
             background-position: center;
@@ -58,7 +59,6 @@
             align-items: center;
             text-align: center;
             color: white;
-            padding: 40px 20px; /* Padding para que no pegue en bordes */
             width: 100%;
         }
 
@@ -584,6 +584,12 @@
 
         /* --- RESPONSIVO PARA CELULARES --- */
         @media (max-width: 768px) {
+            .hero {
+                /* Aseguramos que el contenido fluya y no se atore en móvil */
+                min-height: auto;
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
             .hero-img-container { margin-bottom: 15px; } 
             .hero h1 { font-size: 1.5rem; }
             .hero h2 { font-size: 2.2rem; } 
@@ -905,7 +911,7 @@
             }, 2500); 
         }
 
-        // --- EFECTO DE PÉTALOS DORADOS (CORREGIDO) ---
+        // --- EFECTO DE PÉTALOS DORADOS ---
         const petalsContainer = document.getElementById('petals-container');
         
         function createPetal() {
