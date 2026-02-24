@@ -24,14 +24,17 @@
             padding: 0;
         }
 
-        /* REGLA DE ORO PARA EVITAR SCROLL HORIZONTAL */
-        html, body {
+        /* REGLA CORREGIDA PARA EVITAR SCROLL HORIZONTAL SIN TRABAR EL CELULAR */
+        html {
+            overflow-x: hidden;
+        }
+
+        body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--color-fondo);
             color: var(--color-texto);
-            overflow-x: hidden !important;
+            overflow-x: hidden;
             width: 100%;
-            max-width: 100vw;
             position: relative;
         }
 
@@ -233,11 +236,11 @@
         /* --- CONTENEDOR DE FOTO FAMILIAR --- */
         .family-img-wrapper {
             position: relative;
-            display: block; /* Cambiado a block para centrado seguro */
+            display: block; 
             margin: 0 auto;
             width: 100%;
             max-width: 600px;
-            padding: 0 15px; /* Evita que pegue a los bordes */
+            padding: 0 15px; 
         }
 
         .family-img-container {
@@ -317,7 +320,7 @@
         }
 
         .card {
-            flex: 1 1 300px; /* Reducido a 300px para evitar overflow en móviles */
+            flex: 1 1 300px; 
             width: 100%;
             max-width: 500px;
             background: var(--color-fondo);
@@ -550,11 +553,41 @@
             margin-bottom: 10px;
         }
 
+        /* --- BOTÓN DE MÚSICA FLOTANTE --- */
+        .music-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background-color: var(--color-oro);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5);
+            cursor: pointer;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s, background-color 0.3s;
+            animation: pulse-gold 2s infinite;
+        }
+        .music-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--color-oro-oscuro);
+        }
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
         /* --- RESPONSIVO PARA CELULARES --- */
         @media (max-width: 768px) {
             .hero-img-container { margin-bottom: 15px; } 
             .hero h1 { font-size: 1.5rem; }
-            .hero h2 { font-size: 2.2rem; } /* Más chico para que no rompa el ancho */
+            .hero h2 { font-size: 2.2rem; } 
             .hero .date { font-size: 1rem; }
             
             #countdown { flex-wrap: wrap; justify-content: center; }
@@ -575,6 +608,8 @@
             .rsvp-container { padding: 30px 15px; }
             .rsvp-section h3 { font-size: 2.5rem; }
             .btn-rsvp { width: 100%; padding: 15px 10px; font-size: 0.9rem; }
+
+            .music-btn { bottom: 20px; right: 20px; width: 45px; height: 45px; }
         }
 
         /* --- EFECTO DE PÉTALOS DORADOS --- */
@@ -583,7 +618,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh; /* Cambiado a vh para evitar rebase */
+            height: 100vh; 
             pointer-events: none; 
             z-index: 9999; 
             overflow: hidden;
@@ -621,6 +656,28 @@
 </head>
 <body>
 
+    <!-- REPRODUCTOR DE MÚSICA OCULTO -->
+    <audio id="bg-music" loop autoplay>
+        <!-- La canción debe estar en la misma carpeta que este archivo -->
+        <source src="50historia.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- BOTÓN DE MÚSICA FLOTANTE -->
+    <button id="music-btn" class="music-btn" aria-label="Reproducir/Pausar música">
+        <!-- Ícono cuando está SONANDO -->
+        <svg id="music-icon-playing" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        </svg>
+        <!-- Ícono cuando está SILENCIADO / PAUSADO -->
+        <svg id="music-icon-muted" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+    </button>
+
     <!-- CONTENEDOR DE PÉTALOS -->
     <div id="petals-container"></div>
 
@@ -650,7 +707,7 @@
     <section class="intro-section">
         <h3 class="script-font" data-aos="fade-up">Celebremos el Amor</h3>
         
-        <!-- 1. FOTO PRINCIPAL DE LOS PAPÁS -->
+        <!-- 1. FOTO PRINCIPAL DE LOS PAPÁS CON LAZY LOAD -->
         <div class="celebremos-img-wrapper" data-aos="fade-up" data-aos-delay="200">
             <div class="hearts-container">
                 <div class="floating-heart">♥</div>
@@ -662,7 +719,7 @@
                 <div class="floating-heart">♥</div>
             </div>
             <div class="celebremos-img-container">
-                <img src="IMG/IMG8.png" alt="Nuestros Padres">
+                <img src="IMG/IMG8.png" alt="Nuestros Padres" loading="lazy">
             </div>
         </div>
 
@@ -672,7 +729,7 @@
             Es por eso que deseamos, con inmensa alegría, celebrar con ustedes el 50 aniversario de su unión.
         </p>
 
-        <!-- 3. NUEVA FOTO FAMILIAR CON MARCO NEGRO -->
+        <!-- 3. NUEVA FOTO FAMILIAR CON MARCO NEGRO Y LAZY LOAD -->
         <div class="family-img-wrapper" data-aos="fade-up" data-aos-delay="600">
             <div class="sparkles-container">
                 <div class="floating-sparkle">✨</div>
@@ -682,7 +739,7 @@
                 <div class="floating-sparkle">✨</div>
             </div>
             <div class="family-img-container">
-                <img src="IMG/FAMILIA.jpg" alt="Nuestra Familia">
+                <img src="IMG/FAMILIA.jpg" alt="Nuestra Familia" loading="lazy">
             </div>
         </div>
     </section>
@@ -734,29 +791,24 @@
         <h3 class="script-font" data-aos="fade-up">50 Años, Mil Recuerdos</h3>
         
         <div class="slideshow-frame" data-aos="zoom-in">
-            <!-- FOTO 1 (Aparece primero por tener la clase "active") -->
+            <!-- FOTOS CON LAZY LOAD PARA EVITAR TRABAS -->
             <div class="slide active">
-                <img src="IMG/IMG1.png" alt="Recuerdo 1">
+                <img src="IMG/IMG1.png" alt="Recuerdo 1" loading="lazy">
             </div>
-            <!-- FOTO 2 -->
             <div class="slide">
-                <img src="IMG/IMG3.png" alt="Recuerdo 2">
+                <img src="IMG/IMG3.png" alt="Recuerdo 2" loading="lazy">
             </div>
-            <!-- FOTO 3 -->
             <div class="slide">
-                <img src="IMG/IMG4.png" alt="Recuerdo 3">
+                <img src="IMG/IMG4.png" alt="Recuerdo 3" loading="lazy">
             </div>
-            <!-- FOTO 4 -->
             <div class="slide">
-                <img src="IMG/IMG5.png" alt="Recuerdo 4">
+                <img src="IMG/IMG5.png" alt="Recuerdo 4" loading="lazy">
             </div>
-            <!-- FOTO 5 -->
             <div class="slide">
-                <img src="IMG/IMG6.png" alt="Recuerdo 5">
+                <img src="IMG/IMG6.png" alt="Recuerdo 5" loading="lazy">
             </div>
-            <!-- FOTO 6 -->
             <div class="slide">
-                <img src="IMG/IMG7.png" alt="Recuerdo 6">
+                <img src="IMG/IMG7.png" alt="Recuerdo 6" loading="lazy">
             </div>
         </div>
     </section>
@@ -794,11 +846,56 @@
     <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inicializar animaciones de scroll
+        // Inicializar animaciones de scroll (AJUSTADO PARA QUE NO TRABE)
         AOS.init({
             once: true,
-            offset: 100
+            offset: 50 // Reducido para que las animaciones detonen más rápido y no te deje pantalla en blanco
         });
+
+        // --- LÓGICA DE LA MÚSICA ---
+        const audio = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-btn');
+        const iconPlaying = document.getElementById('music-icon-playing');
+        const iconMuted = document.getElementById('music-icon-muted');
+        let isPlaying = false;
+
+        // Función para reproducir/pausar al apretar el botón
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                iconPlaying.style.display = 'none';
+                iconMuted.style.display = 'block';
+            } else {
+                audio.play();
+                iconPlaying.style.display = 'block';
+                iconMuted.style.display = 'none';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        musicBtn.addEventListener('click', toggleMusic);
+
+        // Truco para iniciar la música en cuanto el usuario toque la pantalla (haga click o scroll)
+        const startMusicOnInteraction = () => {
+            if (!isPlaying) {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    iconPlaying.style.display = 'block';
+                    iconMuted.style.display = 'none';
+                }).catch(err => {
+                    console.log("Esperando interacción para iniciar música...");
+                });
+            }
+            // Quitar los detectores una vez que ya interactuó
+            document.body.removeEventListener('click', startMusicOnInteraction);
+            document.body.removeEventListener('touchstart', startMusicOnInteraction);
+            window.removeEventListener('scroll', startMusicOnInteraction);
+        };
+
+        document.body.addEventListener('click', startMusicOnInteraction);
+        document.body.addEventListener('touchstart', startMusicOnInteraction);
+        window.addEventListener('scroll', startMusicOnInteraction, { once: true });
+
 
         // --- LÓGICA DEL SLIDESHOW (GALERÍA) ---
         const slides = document.querySelectorAll('.slide');
@@ -865,4 +962,3 @@
     </script>
 </body>
 </html>
-
