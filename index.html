@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bodas de Oro - María Eugenia y Pablo Alberto</title>
-    <!-- Dagiti Font ti Google -->
+    <!-- Fuentes de Google -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Libreria para kadagiti animasyon no ag-scroll -->
+    <!-- Librería para animaciones al hacer scroll -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        /* --- KAGAGANGAY NGA ESTILO --- */
+        /* --- ESTILOS GENERALES --- */
         :root {
             --color-oro: #D4AF37;
             --color-oro-oscuro: #AA8C2C;
@@ -36,7 +36,7 @@
             color: var(--color-oro);
         }
 
-        /* --- AKKUB (HERO) --- */
+        /* --- PORTADA (HERO) --- */
         .hero {
             height: 100vh;
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1519225421980-715cb0200d89?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
@@ -52,7 +52,7 @@
             padding: 20px;
         }
 
-        /* --- KANGARUNAAN A LADAWAN AESTHETIC --- */
+        /* --- FOTO PRINCIPAL AESTHETIC --- */
         .hero-img-container {
             width: 220px;
             height: 220px;
@@ -80,7 +80,7 @@
         }
 
         .hero h2 {
-            font-size: 4.5rem; /* Basbassit para kadagiti atiddog a nagan */
+            font-size: 4.5rem; /* Un poco más pequeño para nombres largos */
             margin: 10px 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             line-height: 1.1;
@@ -98,7 +98,7 @@
             padding: 10px 0;
         }
 
-        /* --- PANAGBILANG NGA AGPASANUD --- */
+        /* --- CUENTA REGRESIVA --- */
         #countdown {
             display: flex;
             gap: 15px;
@@ -128,7 +128,7 @@
             letter-spacing: 1px;
         }
 
-        /* --- SEKSYON TI ESTORYA/INTRO --- */
+        /* --- SECCIÓN HISTORIA/INTRO --- */
         .intro-section {
             padding: 100px 20px;
             text-align: center;
@@ -145,27 +145,27 @@
             font-size: 1.1rem;
             line-height: 2;
             color: #555;
-            margin-bottom: 40px; /* Nayon a baet para iti ladawan */
+            margin-bottom: 40px; /* Espacio añadido para la imagen */
         }
 
-        /* --- NAGYANAN TI LADAWAN "CELEBREMOS EL AMOR" --- */
+        /* --- CONTENEDOR DE FOTO "CELEBREMOS EL AMOR" --- */
         .celebremos-img-wrapper {
             position: relative;
             display: inline-block;
-            margin: 0 auto 40px auto; /* Margin iti baba ti ladawan */
+            margin: 0 auto 40px auto; /* Margen debajo de la foto */
             border-radius: 15px;
         }
 
         .celebremos-img-container {
-            width: 300px; /* Kadakkel ti ladawan */
+            width: 300px; /* Tamaño de la imagen */
             height: 400px;
             border-radius: 15px;
             border: 3px solid var(--color-oro);
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             overflow: hidden;
             position: relative;
-            z-index: 2; /* Siguraduen a ti ladawan ket adda iti ngato dagiti puso */
-            background-color: #eaeaea; /* Kolor ti likudan no agbayag a mag-load ti ladawan */
+            z-index: 2; /* Asegura que la imagen esté por encima de los corazones */
+            background-color: #eaeaea; /* Color de fondo por si la imagen tarda en cargar */
         }
 
         .celebremos-img-container img {
@@ -176,19 +176,19 @@
         }
         
         .celebremos-img-container:hover img {
-            transform: scale(1.05); /* Bassit a zoom no isempet ti mouse */
+            transform: scale(1.05); /* Ligero zoom al pasar el ratón */
         }
 
-        /* --- EPEKTO DAGITI NABALITOKAN A PUSO --- */
+        /* --- EFECTO CORAZONES DORADOS --- */
         .hearts-container {
             position: absolute;
             top: -20px;
             left: -20px;
             right: -20px;
             bottom: -20px;
-            z-index: 1; /* Dagiti puso iti likudan ti ladawan */
-            pointer-events: none; /* Saan a makibiang iti mouse */
-            overflow: visible; /* Ipalubos a rummuar iti igid */
+            z-index: 1; /* Corazones detrás de la imagen */
+            pointer-events: none; /* No interfieren con el ratón */
+            overflow: visible; /* Permite que salgan del borde */
         }
 
         .floating-heart {
@@ -197,10 +197,10 @@
             opacity: 0;
             animation: floatUp 4s ease-in-out infinite;
             filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.6));
-            font-size: 20px; /* Kadakkel a base ti puso */
+            font-size: 20px; /* Tamaño base del corazón */
         }
 
-        /* Saggaysa nga animasyon para iti panagduduma dagiti puso */
+        /* Animaciones individuales para variedad corazones */
         .floating-heart:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 4s; font-size: 18px;}
         .floating-heart:nth-child(2) { left: 30%; animation-delay: 1.5s; animation-duration: 5s; font-size: 24px;}
         .floating-heart:nth-child(3) { left: 50%; animation-delay: 0.5s; animation-duration: 4.5s; font-size: 16px;}
@@ -214,10 +214,10 @@
             0% { transform: translateY(100%) scale(0.5); opacity: 0; }
             20% { opacity: 0.8; }
             80% { opacity: 0.8; }
-            100% { transform: translateY(-150%) scale(1.2); opacity: 0; } /* Ngumato ken dumakkel */
+            100% { transform: translateY(-150%) scale(1.2); opacity: 0; } /* Sube y se hace más grande */
         }
 
-        /* --- NAGYANAN TI LADAWAN TI PAMILYA --- */
+        /* --- CONTENEDOR DE FOTO FAMILIAR --- */
         .family-img-wrapper {
             position: relative;
             display: inline-block;
@@ -230,7 +230,7 @@
             width: 100%;
             height: 350px;
             border-radius: 12px;
-            border: 6px solid #1a1a1a; /* ELEGANTE A NANGISIT A MARKO */
+            border: 6px solid #1a1a1a; /* MARCO NEGRO ELEGANTE */
             box-shadow: 0 15px 35px rgba(0,0,0,0.3), 0 0 20px rgba(212, 175, 55, 0.2);
             overflow: hidden;
             position: relative;
@@ -249,7 +249,7 @@
             transform: scale(1.05);
         }
 
-        /* --- EPEKTO A PANAGRIMAT PARA ITI LADAWAN TI PAMILYA --- */
+        /* --- EFECTO DESTELLOS PARA LA FOTO FAMILIAR --- */
         .sparkles-container {
             position: absolute;
             top: -20px; left: -20px; right: -20px; bottom: -20px;
@@ -277,10 +277,17 @@
             50% { transform: scale(1.2) rotate(45deg); opacity: 1; }
         }
 
-        /* --- DAGITI LUGAR (SIMBAAN KEN SALON) --- */
+        /* --- LUGARES E ITINERARIO (IGLESIA Y SALÓN) --- */
         .locations {
             background-color: white;
             padding: 80px 20px;
+        }
+        
+        .locations .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 50px;
+            width: 100%;
         }
 
         .details-container {
@@ -347,7 +354,7 @@
             line-height: 1.6;
             color: #666;
             margin-bottom: 30px;
-            height: 60px; /* Para ilinia dagiti buton */
+            height: 60px; /* Para alinear botones */
         }
 
         .btn-map {
@@ -371,7 +378,7 @@
             color: white;
         }
 
-        /* --- GALERIA (50 AÑOS, MIL RECUERDOS) --- */
+        /* --- GALERÍA (50 AÑOS, MIL RECUERDOS) --- */
         .gallery-section {
             padding: 80px 20px;
             text-align: center;
@@ -385,12 +392,12 @@
 
         .slideshow-frame {
             position: relative;
-            max-width: 500px; /* Kangatuan a kaakaba ti ladawan */
-            height: 600px; /* Kangato ti ladawan (pormat a retrato) */
+            max-width: 500px; /* Ancho máximo de la foto */
+            height: 600px; /* Alto de la foto (formato retrato) */
             margin: 0 auto;
             background: #ffffff;
-            padding: 18px; /* Napuskol a puraw nga igid */
-            border: 2px solid var(--color-oro); /* Nabalitokan a kontur */
+            padding: 18px; /* Borde blanco grueso */
+            border: 2px solid var(--color-oro); /* Contorno dorado */
             border-radius: 12px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.15);
             overflow: hidden;
@@ -401,16 +408,16 @@
             top: 18px; 
             left: 18px; 
             right: 18px; 
-            bottom: 18px; /* Respetuen ti puraw a padding */
+            bottom: 18px; /* Respeta el padding blanco */
             opacity: 0;
             transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-            transform: scale(1.05); /* Mangrugi iti bassit a zoom */
+            transform: scale(1.05); /* Empieza con un ligero zoom */
             z-index: 1;
         }
 
         .slide.active {
             opacity: 1;
-            transform: scale(1); /* Agsubli iti normal a kadakkelna a nalamuyot */
+            transform: scale(1); /* Regresa a su tamaño normal suavemente */
             z-index: 2;
         }
 
@@ -418,10 +425,10 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 8px; /* Medyo nagtimbukel dagiti suli iti uneg ti ladawan */
+            border-radius: 8px; /* Esquinas ligeramente redondeadas en la foto interior */
         }
 
-        /* --- KODIGO TI PANAGBADBADIKAW --- */
+        /* --- CÓDIGO DE VESTIMENTA --- */
         .dress-code {
             text-align: center;
             padding: 100px 20px;
@@ -451,7 +458,7 @@
             line-height: 1.8;
         }
 
-        /* --- PANAGKUMPIRMA (RSVP) --- */
+        /* --- CONFIRMACIÓN (RSVP) --- */
         .rsvp-section {
             padding: 80px 20px;
             background-color: white;
@@ -501,7 +508,7 @@
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
         }
 
-        /* --- BABA --- */
+        /* --- FOOTER --- */
         footer {
             text-align: center;
             padding: 60px 20px;
@@ -514,52 +521,53 @@
             margin-bottom: 10px;
         }
 
-        /* --- RESPONSIVE PARA KADAGITI SELPON --- */
+        /* --- RESPONSIVO PARA CELULARES --- */
         @media (max-width: 768px) {
-            .hero-img-container { width: 170px; height: 170px; margin-bottom: 15px; }
+            .hero-img-container { margin-bottom: 15px; } /* Mantenemos mismo tamaño (220px) en celular */
             .hero h1 { font-size: 1.5rem; }
-            .hero h2 { font-size: 2.8rem; } /* Nasken a panag-adjust para kadagiti atiddog a nagan iti mobile */
+            .hero h2 { font-size: 2.8rem; } /* Ajuste clave para nombres largos en móvil */
             .hero .date { font-size: 1rem; }
             
             #countdown { flex-wrap: wrap; justify-content: center; }
             .time-box { flex: 1 1 40%; }
             
             .intro-section h3 { font-size: 2.8rem; }
-            .celebremos-img-container { width: 250px; height: 333px; } /* Panag-adjust para iti mobile */
-            .family-img-container { height: 220px; border-width: 4px; } /* Panag-adjust ti ladawan ti pamilya iti mobile */
+            .celebremos-img-container { width: 250px; height: 333px; } /* Ajuste para móvil */
+            .family-img-container { height: 220px; border-width: 4px; } /* Ajuste de la foto familiar en móvil */
             
+            .locations .section-title { font-size: 2.8rem; margin-bottom: 30px; } /* Ajuste del título Itinerario */
             .card-content { padding: 30px 20px; }
-            .card-content p { height: auto; margin-bottom: 20px; } /* Panag-adjust ti kangato iti mobile */
+            .card-content p { height: auto; margin-bottom: 20px; } /* Ajuste altura en móvil */
 
-            /* Dagiti panag-adjust ti Galeria iti Mobile */
+            /* Ajustes Galería Móvil */
             .gallery-section h3 { font-size: 2.5rem; }
             .slideshow-frame { height: 450px; padding: 12px; }
             .slide { top: 12px; left: 12px; right: 12px; bottom: 12px; }
             
-            /* Dagiti responsive a panag-adjust para iti panagkumpirma */
+            /* Ajustes responsivos para la confirmación */
             .rsvp-container { padding: 30px 15px; }
             .rsvp-section h3 { font-size: 2.5rem; }
             .btn-rsvp { width: 100%; padding: 15px 20px; font-size: 0.9rem; }
         }
 
-        /* --- EPEKTO DAGITI NABALITOKAN A PETALOS --- */
+        /* --- EFECTO DE PÉTALOS DORADOS --- */
         #petals-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none; /* NAPATEG: Tapno saan a makasubeg dagiti klik kadagiti buton */
-            z-index: 9999; /* Tapno matnagda iti sanga ti amin */
+            pointer-events: none; /* IMPORTANTE: Para que no estorben los clics a los botones */
+            z-index: 9999; /* Para que caigan por enfrente de todo */
             overflow: hidden;
         }
 
         .petal {
             position: absolute;
             top: -10%;
-            /* Degradado tapno maikkan ti epekto ti kolor balitok / petalo */
+            /* Degradado para dar efecto de color oro / pétalo */
             background: radial-gradient(ellipse at center, #FFDF73 0%, #D4AF37 50%, #997A00 100%);
-            border-radius: 0px 50% 50% 50%; /* Mangted ti porma a kasla tedted wenno petalo */
+            border-radius: 0px 50% 50% 50%; /* Da una formita como de gota o pétalo */
             opacity: 0.8;
             animation: fall linear forwards;
             box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
@@ -587,12 +595,12 @@
 </head>
 <body>
 
-    <!-- NAGYANAN DAGITI PETALOS -->
+    <!-- CONTENEDOR DE PÉTALOS -->
     <div id="petals-container"></div>
 
-    <!-- AKKUB (HERO) -->
+    <!-- PORTADA (HERO) -->
     <header class="hero">
-        <!-- KANGARUNAAN A LADAWAN -->
+        <!-- IMAGEN PRINCIPAL -->
         <div class="hero-img-container" data-aos="zoom-in" data-aos-duration="2000">
             <img src="IMG/IMG2.png" alt="María Eugenia y Pablo Alberto">
         </div>
@@ -603,7 +611,7 @@
             Sábado, 28 de Marzo de 2026
         </div>
         
-        <!-- Relo -->
+        <!-- Reloj -->
         <div id="countdown" data-aos="fade-up" data-aos-delay="1200">
             <div class="time-box"><span id="days">00</span><small>Días</small></div>
             <div class="time-box"><span id="hours">00</span><small>Hrs</small></div>
@@ -612,11 +620,11 @@
         </div>
     </header>
 
-    <!-- MENSAHE KEN DAGITI LADAWAN MEGA PRO -->
+    <!-- MENSAJE Y FOTOS MEGA PRO -->
     <section class="intro-section">
         <h3 class="script-font" data-aos="fade-up">Celebremos el Amor</h3>
         
-        <!-- 1. KANGARUNAAN A LADAWAN DAGITI NAGANAK -->
+        <!-- 1. FOTO PRINCIPAL DE LOS PAPÁS -->
         <div class="celebremos-img-wrapper" data-aos="fade-up" data-aos-delay="200">
             <div class="hearts-container">
                 <div class="floating-heart">♥</div>
@@ -632,13 +640,13 @@
             </div>
         </div>
 
-        <!-- 2. TEKSTO -->
+        <!-- 2. TEXTO -->
         <p data-aos="fade-up" data-aos-delay="400">
             La vida ha permitido a nuestros padres permanecer juntos durante 50 maravillosos años. 
             Es por eso que deseamos, con inmensa alegría, celebrar con ustedes el 50 aniversario de su unión.
         </p>
 
-        <!-- 3. BARO A LADAWAN TI PAMILYA NGA ADDA NANGISIT A MARKO -->
+        <!-- 3. NUEVA FOTO FAMILIAR CON MARCO NEGRO -->
         <div class="family-img-wrapper" data-aos="fade-up" data-aos-delay="600">
             <div class="sparkles-container">
                 <div class="floating-sparkle">✨</div>
@@ -653,11 +661,14 @@
         </div>
     </section>
 
-    <!-- DAGITI LUGAR (SIMBAAN KEN SALON) -->
+    <!-- LUGARES E ITINERARIO (IGLESIA Y SALÓN) -->
     <section class="locations">
+        <!-- TÍTULO DE ITINERARIO AGREGADO -->
+        <h3 class="script-font section-title" data-aos="fade-up">Itinerario</h3>
+        
         <div class="details-container">
             
-            <!-- SIMBAAN -->
+            <!-- IGLESIA -->
             <div class="card" data-aos="fade-right">
                 <div class="card-img img-church"></div>
                 <div class="card-content">
@@ -673,7 +684,7 @@
                 </div>
             </div>
 
-            <!-- SALON -->
+            <!-- SALÓN -->
             <div class="card" data-aos="fade-left">
                 <div class="card-img img-venue"></div>
                 <div class="card-content">
@@ -692,39 +703,39 @@
         </div>
     </section>
 
-    <!-- GALERIA DAGITI LAGIP (SLIDESHOW) -->
+    <!-- GALERÍA DE RECUERDOS (SLIDESHOW) -->
     <section class="gallery-section">
         <h3 class="script-font" data-aos="fade-up">50 Años, Mil Recuerdos</h3>
         
         <div class="slideshow-frame" data-aos="zoom-in">
-            <!-- LADAWAN 1 (Agparang nga umuna gapu ta adda klasena nga "active") -->
+            <!-- FOTO 1 (Aparece primero por tener la clase "active") -->
             <div class="slide active">
                 <img src="IMG/IMG1.png" alt="Recuerdo 1">
             </div>
-            <!-- LADAWAN 2 -->
+            <!-- FOTO 2 -->
             <div class="slide">
                 <img src="IMG/IMG3.png" alt="Recuerdo 2">
             </div>
-            <!-- LADAWAN 3 -->
+            <!-- FOTO 3 -->
             <div class="slide">
                 <img src="IMG/IMG4.png" alt="Recuerdo 3">
             </div>
-            <!-- LADAWAN 4 -->
+            <!-- FOTO 4 -->
             <div class="slide">
                 <img src="IMG/IMG5.png" alt="Recuerdo 4">
             </div>
-            <!-- LADAWAN 5 -->
+            <!-- FOTO 5 -->
             <div class="slide">
                 <img src="IMG/IMG6.png" alt="Recuerdo 5">
             </div>
-            <!-- LADAWAN 6 -->
+            <!-- FOTO 6 -->
             <div class="slide">
                 <img src="IMG/IMG7.png" alt="Recuerdo 6">
             </div>
         </div>
     </section>
 
-    <!-- PANAGBADBADIKAW -->
+    <!-- VESTIMENTA -->
     <section class="dress-code">
         <div data-aos="zoom-in">
             <h3 class="script-font">Código de Vestimenta</h3>
@@ -735,7 +746,7 @@
         </div>
     </section>
 
-    <!-- PANAGKUMPIRMA TI ITATABUNO -->
+    <!-- CONFIRMACIÓN DE ASISTENCIA -->
     <section class="rsvp-section">
         <div class="rsvp-container" data-aos="fade-up">
             <h3 class="script-font">Asistencia</h3>
@@ -748,73 +759,73 @@
         </div>
     </section>
 
-    <!-- BABA -->
+    <!-- FOOTER -->
     <footer>
         <h2 class="script-font" data-aos="fade-up">¡Los esperamos!</h2>
         <p data-aos="fade-up" data-aos-delay="200" style="opacity: 0.7; margin-top: 10px;">Familia de María Eugenia y Pablo Alberto - 2026</p>
     </footer>
 
-    <!-- DAGITI SCRIPT -->
+    <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Irugi dagiti animasyon ti scroll
+        // Inicializar animaciones de scroll
         AOS.init({
             once: true,
             offset: 100
         });
 
-        // --- LOHIKA TI SLIDESHOW (GALERIA) ---
+        // --- LÓGICA DEL SLIDESHOW (GALERÍA) ---
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
 
         if (slides.length > 0) {
             setInterval(() => {
-                // Ikkaten ti klase nga active iti agdama a ladawan
+                // Quitar clase active a la foto actual
                 slides[currentSlide].classList.remove('active');
                 
-                // Mapas iti sumaganad a ladawan (ken no isu ti maudi, agsubli iti 0)
+                // Pasar a la siguiente foto (y si es la última, regresa a la 0)
                 currentSlide = (currentSlide + 1) % slides.length;
                 
-                // Ikkan ti klase nga active iti baro a ladawan
+                // Poner clase active a la nueva foto
                 slides[currentSlide].classList.add('active');
-            }, 2500); // 2500 a milisegundo = agbaliw tunggal 2.5 a segundo
+            }, 2500); // 2500 milisegundos = cambia cada 2.5 segundos
         }
 
-        // --- EPEKTO DAGITI NABALITOKAN A PETALOS ---
+        // --- EFECTO DE PÉTALOS DORADOS ---
         const petalsContainer = document.getElementById('petals-container');
         
         function createPetal() {
             const petal = document.createElement('div');
             petal.classList.add('petal');
             
-            // Paspasamak a kadakkel ti petalo (nagbaetan ti 10px ken 25px)
+            // Tamaño aleatorio del pétalo (entre 10px y 25px)
             const size = Math.random() * 15 + 10;
             petal.style.width = `${size}px`;
             petal.style.height = `${size}px`;
             
-            // Paspasamak a horizontal a posisyon iti pangrugian
+            // Posición horizontal de inicio aleatoria
             petal.style.left = `${Math.random() * 100}vw`;
             
-            // Paspasamak a kapaut ti panagtnag (nagbaetan ti 6 ken 11 a segundo)
+            // Duración de la caída aleatoria (entre 6 y 11 segundos)
             const duration = Math.random() * 5 + 6;
             petal.style.animationDuration = `${duration}s`;
             
-            // Dagiti variable para iti natural a panaggunay (mapan kadagiti igid ken panagpusipos)
+            // Variables para el movimiento natural (deriva hacia los lados y rotación)
             petal.style.setProperty('--drift', `${Math.random() * 300 - 150}px`);
             petal.style.setProperty('--rotation', `${Math.random() * 720}deg`);
             
             petalsContainer.appendChild(petal);
             
-            // Ikkaten ti petalo manipud iti kodigo no malpas a matnag tapno saan a mapunno ti memorya
+            // Eliminar el pétalo del código una vez que termina de caer para no saturar la memoria
             setTimeout(() => {
                 petal.remove();
             }, duration * 1000);
         }
 
-        // Mangaramid iti baro a petalo tunggal 400 a milisegundo (no kayatmo ti ad-adu, pababaem ti numero)
+        // Crear un pétalo nuevo cada 400 milisegundos (si quieres más, baja el número)
         setInterval(createPetal, 400);
 
-        // Konpigurasyon ti Panagbilang nga Agpasanud
+        // Configuración de la Cuenta Regresiva
         const targetDate = new Date("Mar 28, 2026 17:00:00").getTime();
 
         const timerInterval = setInterval(function() {
