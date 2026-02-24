@@ -24,16 +24,17 @@
             padding: 0;
         }
 
-        /* REGLA CORREGIDA PARA EVITAR SCROLL HORIZONTAL SIN TRABAR EL CELULAR */
+        /* SCROLL FLUIDO Y NATURAL */
         html {
-            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--color-fondo);
             color: var(--color-texto);
-            overflow-x: hidden;
+            /* Evitamos scroll horizontal ocultando el sobrante en X */
+            overflow-x: hidden; 
             width: 100%;
             position: relative;
         }
@@ -45,7 +46,8 @@
 
         /* --- PORTADA (HERO) --- */
         .hero {
-            height: 100vh;
+            /* Usamos min-height para que se adapte mejor en celulares */
+            min-height: 100vh;
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1519225421980-715cb0200d89?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
             background-size: cover;
             background-position: center;
@@ -56,7 +58,7 @@
             align-items: center;
             text-align: center;
             color: white;
-            padding: 20px;
+            padding: 40px 20px; /* Padding para que no pegue en bordes */
             width: 100%;
         }
 
@@ -71,6 +73,7 @@
             overflow: hidden;
             position: relative;
             background-color: var(--color-fondo);
+            flex-shrink: 0; /* Evita que se aplaste */
         }
 
         .hero-img-container img {
@@ -299,7 +302,6 @@
             background-color: white;
             padding: 80px 20px;
             width: 100%;
-            overflow: hidden;
         }
         
         .locations .section-title {
@@ -325,7 +327,7 @@
             max-width: 500px;
             background: var(--color-fondo);
             border-radius: 15px;
-            overflow: hidden;
+            overflow: hidden; /* Mantiene la imagen dentro de los bordes redondeados */
             box-shadow: 0 15px 35px rgba(0,0,0,0.05);
             transition: transform 0.3s ease;
             position: relative;
@@ -406,7 +408,6 @@
             text-align: center;
             background-color: var(--color-fondo);
             width: 100%;
-            overflow: hidden;
         }
 
         .gallery-section h3 {
@@ -459,7 +460,6 @@
             padding: 100px 20px;
             background-image: linear-gradient(rgba(250, 249, 246, 0.9), rgba(250, 249, 246, 0.9)), url('https://www.transparenttextures.com/patterns/stardust.png');
             width: 100%;
-            overflow: hidden;
         }
         
         .dress-code h3 {
@@ -491,7 +491,6 @@
             background-color: white;
             text-align: center;
             width: 100%;
-            overflow: hidden;
         }
         .rsvp-container {
             width: 100%;
@@ -612,26 +611,29 @@
             .music-btn { bottom: 20px; right: 20px; width: 45px; height: 45px; }
         }
 
-        /* --- EFECTO DE PÉTALOS DORADOS --- */
+        /* --- EFECTO DE PÉTALOS DORADOS (CORREGIDO PARA NO BLOQUEAR CLICS NI SCROLL) --- */
         #petals-container {
-            position: fixed;
+            /* IMPORTANTE: position absolute en vez de fixed evita que el contenedor sea una barrera en móviles */
+            position: absolute; 
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh; 
-            pointer-events: none; 
+            height: 100%; 
+            pointer-events: none; /* Asegura que ignora el toque */
             z-index: 9999; 
             overflow: hidden;
         }
 
         .petal {
-            position: absolute;
+            /* Los pétalos sí se mueven fijos por la pantalla */
+            position: fixed; 
             top: -10%;
             background: radial-gradient(ellipse at center, #FFDF73 0%, #D4AF37 50%, #997A00 100%);
             border-radius: 0px 50% 50% 50%; 
             opacity: 0.8;
             animation: fall linear forwards;
             box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+            pointer-events: none;
         }
 
         @keyframes fall {
@@ -658,7 +660,6 @@
 
     <!-- REPRODUCTOR DE MÚSICA OCULTO -->
     <audio id="bg-music" loop autoplay>
-        <!-- La canción debe estar en la misma carpeta que este archivo -->
         <source src="50historia.mp3" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
     </audio>
@@ -707,7 +708,7 @@
     <section class="intro-section">
         <h3 class="script-font" data-aos="fade-up">Celebremos el Amor</h3>
         
-        <!-- 1. FOTO PRINCIPAL DE LOS PAPÁS CON LAZY LOAD -->
+        <!-- 1. FOTO PRINCIPAL DE LOS PAPÁS -->
         <div class="celebremos-img-wrapper" data-aos="fade-up" data-aos-delay="200">
             <div class="hearts-container">
                 <div class="floating-heart">♥</div>
@@ -729,7 +730,7 @@
             Es por eso que deseamos, con inmensa alegría, celebrar con ustedes el 50 aniversario de su unión.
         </p>
 
-        <!-- 3. NUEVA FOTO FAMILIAR CON MARCO NEGRO Y LAZY LOAD -->
+        <!-- 3. NUEVA FOTO FAMILIAR -->
         <div class="family-img-wrapper" data-aos="fade-up" data-aos-delay="600">
             <div class="sparkles-container">
                 <div class="floating-sparkle">✨</div>
@@ -744,9 +745,8 @@
         </div>
     </section>
 
-    <!-- LUGARES E ITINERARIO (IGLESIA Y SALÓN) -->
+    <!-- LUGARES E ITINERARIO -->
     <section class="locations">
-        <!-- TÍTULO DE ITINERARIO AGREGADO -->
         <h3 class="script-font section-title" data-aos="fade-up">Itinerario</h3>
         
         <div class="details-container">
@@ -786,12 +786,11 @@
         </div>
     </section>
 
-    <!-- GALERÍA DE RECUERDOS (SLIDESHOW) -->
+    <!-- GALERÍA DE RECUERDOS -->
     <section class="gallery-section">
         <h3 class="script-font" data-aos="fade-up">50 Años, Mil Recuerdos</h3>
         
         <div class="slideshow-frame" data-aos="zoom-in">
-            <!-- FOTOS CON LAZY LOAD PARA EVITAR TRABAS -->
             <div class="slide active">
                 <img src="IMG/IMG1.png" alt="Recuerdo 1" loading="lazy">
             </div>
@@ -846,10 +845,10 @@
     <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inicializar animaciones de scroll (AJUSTADO PARA QUE NO TRABE)
+        // Inicializar animaciones de scroll
         AOS.init({
             once: true,
-            offset: 50 // Reducido para que las animaciones detonen más rápido y no te deje pantalla en blanco
+            offset: 50 
         });
 
         // --- LÓGICA DE LA MÚSICA ---
@@ -859,7 +858,6 @@
         const iconMuted = document.getElementById('music-icon-muted');
         let isPlaying = false;
 
-        // Función para reproducir/pausar al apretar el botón
         function toggleMusic() {
             if (isPlaying) {
                 audio.pause();
@@ -875,7 +873,6 @@
 
         musicBtn.addEventListener('click', toggleMusic);
 
-        // Truco para iniciar la música en cuanto el usuario toque la pantalla (haga click o scroll)
         const startMusicOnInteraction = () => {
             if (!isPlaying) {
                 audio.play().then(() => {
@@ -886,7 +883,6 @@
                     console.log("Esperando interacción para iniciar música...");
                 });
             }
-            // Quitar los detectores una vez que ya interactuó
             document.body.removeEventListener('click', startMusicOnInteraction);
             document.body.removeEventListener('touchstart', startMusicOnInteraction);
             window.removeEventListener('scroll', startMusicOnInteraction);
@@ -909,7 +905,7 @@
             }, 2500); 
         }
 
-        // --- EFECTO DE PÉTALOS DORADOS ---
+        // --- EFECTO DE PÉTALOS DORADOS (CORREGIDO) ---
         const petalsContainer = document.getElementById('petals-container');
         
         function createPetal() {
